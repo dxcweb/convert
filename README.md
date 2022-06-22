@@ -105,10 +105,16 @@ ffmpeg -i 无法播放的视频文件.mp4 -vcodec h264 -profile:v high -level 4.
 
 现在市场上流行的转码软件，在转码或压缩时：
 
-  &emsp;&emsp;1.有的不对Profile和level修改，直接进行有损压缩；
+1.有的不对Profile和level修改，直接进行有损压缩；
 
-  &emsp;&emsp;2.有的是直接转码为Main Profile level 3.1，是因为iPhone 4 支持的最高就是这个档位，具体文档 [iPhone 4  - 技术规格](https://support.apple.com/kb/SP587?viewlocale=zh_CN&locale=zh_CN) 
+2.有的是直接转码为Main Profile level 3.1，是因为iPhone 4 支持的最高就是这个档位，具体文档 [iPhone 4  - 技术规格](https://support.apple.com/kb/SP587?viewlocale=zh_CN&locale=zh_CN) 
 
-  &emsp;&emsp;然而，这个档位的压缩率很低，压缩后的视频文件会很大，所以我们不应该再面向iPhone 4或那时代的产物，而是应该提高压缩级别。
+然而，这个档位的压缩率很低，压缩后的视频文件会很大，所以我们不应该再面向iPhone 4或那时代的产物，而是应该提高压缩级别。
+<br />
+<br />
+<br />
+为此我做了一个[在线视频压缩](https://convert.dxcweb.com/)的网站 https://convert.dxcweb.com/ 提高压缩级别，默认为无损压缩，压缩级别为High Profile level 4.2.
 
-为此我做了一个[在线视频压缩](https://convert.dxcweb.com/)的网站 https://convert.dxcweb.com/ 提高压缩级别，默认为无损压缩，压缩级别为High Profile level 4.2，相比Main Profile level 3.1在相同的分辨率和码率的情况下压缩率提高了很多。**<font color=red>所有视频无法播放的问题，使用本软件压缩后都能解决！</font>** 本软件20M免费，大于20M按视频分钟计费。我也正在考虑是否开源，关注我的[GitHub](https://github.com/dxcweb)。
+相比Main Profile level 3.1在相同的分辨率和码率的情况下压缩率提高了很多，实测压缩前23.32MB压缩后2.53MB。
+
+**<font color=red>所有视频无法播放的问题，使用本软件压缩后都能解决！</font>** 本软件20M免费，大于20M按视频分钟计费。我也正在考虑是否开源，关注我的[GitHub](https://github.com/dxcweb)。
