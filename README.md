@@ -117,4 +117,6 @@ ffmpeg -i 无法播放的视频文件.mp4 -vcodec h264 -profile:v high -level 4.
 
 相比Main Profile level 3.1在相同的分辨率和码率的情况下压缩率提高了很多，实测压缩前23.32MB压缩后2.53MB。
 
-**<font color=red>所有视频无法播放的问题，使用本软件压缩后都能解决！</font>** 本软件20M免费，大于20M按视频分钟计费。我也正在考虑是否开源，关注我的[GitHub](https://github.com/dxcweb)。
+**<font color=red>所有视频无法播放的问题，使用本软件压缩后都能解决！</font>** 本软件20M免费，大于20M按视频分钟计费。我也正在考虑是否开源，
+
+关注我的[GitHub](https://github.com/dxcweb)。
