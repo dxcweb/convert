@@ -1,14 +1,14 @@
 ## 概述
 
-mp4视频在部分手机上加载失败、无法播放或有声音没画面的原因是：视频编码或声道数的问题，解决方案：视频转码。
+mp4视频在部分手机上加载失败、无法播放或有声音没画面的原因是：视频编码或声道数有问题，解决方案：视频转码。
 
-## **背景**
+## 遇到的问题
 
-### 遇到的问题
 1.mp4视频在 iPhone XR (IOS 14.1) 上无法播放，一直显示加载失败，但是在安卓手机上却可以正常播放；
+
 2.一些mp4视频在安卓手机上有声音但是没有画面。
 
-### 问题定位
+## 问题定位
 为了排除是代码的问题，写了个简单的demo：
 
 ```
@@ -19,8 +19,8 @@ mp4视频在部分手机上加载失败、无法播放或有声音没画面的�
 
 mp4视频无法播放的问题很可能出在**视频本身**。
 
-### 解决方法
-#### 1.查看Apple 官网的技术规格文档
+## 如何解决
+### 查看官方文档
 查询 Apple 官网的[设备技术规格](https://support.apple.com/zh_CN/specs) 在 [iPhone 6 - 技术规格](https://https://support.apple.com/kb/SP705?viewlocale=zh_CN&locale=zh_CN)
 
 ![1712668a0f0c96baf541936ec7bb99f.png](https://b3logfile.com/file/2022/06/1712668a0f0c96baf541936ec7bb99f-090edaff.png)
@@ -43,8 +43,25 @@ mp4视频无法播放的问题很可能出在**视频本身**。
 
 支持的视频格式：H.264 视频，高达 1080p，每秒 30 帧，High Profile level 4.1
 
+### 文档结论
+**iPhone 4s 只支持到High Profile level 4.1编码，iPhone 6 支持到 High Profile level 4.2编码。**
 
-**iPhone 4s 只支持到High Profile level 4.1，iPhone 6 支持到 High Profile level 4.2。**
+### 为什么视频编码正确，在iPhone (IOS) 上还是无法播放
+
+#### 1. 声道的问题
+
+注意另外一个细节 [iPhone 6 - 技术规格](https://support.apple.com/kb/SP705?viewlocale=zh_CN&locale=zh_CN)  
+
+如文档中所述，在支持的视频格式中：其音频为 AAC-LC 格式、最高支持 160 Kbps、48kHz、立体声。
+
+但是某些高档的拍摄设备拍出来的视频是4声道，而立体声是2声道，所以不仅需要正确的编码格式，声道数也不能超过2。
+
+#### 2. 分辨率的问题
+
+ 畸形的分辨率也会导致视频无法播放。
+
+
+## 技术说明
 
 ##### Profile和level是什么？
 
@@ -70,15 +87,7 @@ H.265是H.264的升级版，它的压缩率更高，但是支持的浏览器较�
 
 ![](https://b3logfile.com/file/2022/06/5b2bcc87263b4e98b606ce28d180f894.png)
 
-### 为什么视频编码正确，在iPhone (IOS) 上还是无法播放
 
-注意另外一个细节 [iPhone 6 - 技术规格](https://support.apple.com/kb/SP705?viewlocale=zh_CN&locale=zh_CN)  
-
-如文档中所述，在支持的视频格式中：其音频为 AAC-LC 格式、最高支持 160 Kbps、48kHz、立体声。
-
-但是某些高档的拍摄设备拍出来的视频是4声道，而立体声是2声道，所以不仅需要正确的编码格式，声道数也不能超过2。
-
-最后补充下畸形的分辨率也会导致视频无法播放。
 
 ## 最后介绍下如何转码
 
@@ -95,8 +104,11 @@ ffmpeg -i 无法播放的视频文件.mp4 -vcodec h264 -profile:v high -level 4.
 很多压缩软件或视频转码软件是没有Profile和level选项的，主要原因也是考虑到视频的压缩级别过高，在某些环境下无法播放。
 
 现在市场上流行的转码软件，在转码或压缩时：
-1.有的不对Profile和level修改，直接进行有损压缩；
-2.有的是直接转码为Main Profile level 3.1，是因为iPhone 4 支持的最高就是这个档位，具体文档 [iPhone 4  - 技术规格](https://support.apple.com/kb/SP587?viewlocale=zh_CN&locale=zh_CN) 
-然而，这个档位的压缩率很低，压缩后的视频文件会很大，所以我们不应该再面向iPhone 4或那时代的产物，而是应该提高压缩级别。
 
-为此我做了一个[在线视频压缩](https://convert.dxcweb.com/)的网站 https://convert.dxcweb.com/ 提高压缩级别，默认为无损压缩，压缩级别为High Profile level 4.2，相比Main Profile level 3.1在相同的分辨率和码率的情况下压缩率提高了很多。***所有视频无法播放的问题，使用本软件压缩后都能解决***，本软件20M免费，大于20M按视频分钟计费。我也正在考虑是否开源，关注我的[GitHub](https://github.com/dxcweb)。
+  &emsp;&emsp;1.有的不对Profile和level修改，直接进行有损压缩；
+
+  &emsp;&emsp;2.有的是直接转码为Main Profile level 3.1，是因为iPhone 4 支持的最高就是这个档位，具体文档 [iPhone 4  - 技术规格](https://support.apple.com/kb/SP587?viewlocale=zh_CN&locale=zh_CN) 
+
+  &emsp;&emsp;然而，这个档位的压缩率很低，压缩后的视频文件会很大，所以我们不应该再面向iPhone 4或那时代的产物，而是应该提高压缩级别。
+
+为此我做了一个[在线视频压缩](https://convert.dxcweb.com/)的网站 https://convert.dxcweb.com/ 提高压缩级别，默认为无损压缩，压缩级别为High Profile level 4.2，相比Main Profile level 3.1在相同的分辨率和码率的情况下压缩率提高了很多。**<font color=red>所有视频无法播放的问题，使用本软件压缩后都能解决！</font>** 本软件20M免费，大于20M按视频分钟计费。我也正在考虑是否开源，关注我的[GitHub](https://github.com/dxcweb)。
