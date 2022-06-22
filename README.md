@@ -23,7 +23,8 @@ mp4视频无法播放的问题很可能出在**视频本身**。
 ### 查看官方文档
 查询 Apple 官网的[设备技术规格](https://support.apple.com/zh_CN/specs) 在 [iPhone 6 - 技术规格](https://https://support.apple.com/kb/SP705?viewlocale=zh_CN&locale=zh_CN)
 
-![1712668a0f0c96baf541936ec7bb99f.png](https://b3logfile.com/file/2022/06/1712668a0f0c96baf541936ec7bb99f-090edaff.png)
+![1712668a0f0c96baf541936ec7bb99f.png](https://upload-images.jianshu.io/upload_images/6765590-477a4a2dceaba2fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 明确写到支持的视频格式：H.264 视频：最高支持 1080p、60 fps、High Profile level 4.2 编码
 
@@ -31,7 +32,8 @@ mp4视频无法播放的问题很可能出在**视频本身**。
 
 进一步查看问题手机 [iPhone XR - 技术规格](https://support.apple.com/kb/SP781?viewlocale=zh_CN&locale=zh_CN)
 
-![2628a4d3517291652ea570b9aaa6fb0.png](https://b3logfile.com/file/2022/06/2628a4d3517291652ea570b9aaa6fb0-70a84aac.png)
+![2628a4d3517291652ea570b9aaa6fb0.png](https://upload-images.jianshu.io/upload_images/6765590-d8624e669377ae93.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 支持的视频格式：HEVC、H.264、MPEG-4 Part 2 与 Motion JPEG
 
@@ -39,7 +41,8 @@ mp4视频无法播放的问题很可能出在**视频本身**。
 
 [iPhone 4s - 技术规格](https://support.apple.com/kb/SP655?viewlocale=zh_CN&locale=zh_CN)
 
-![f047cb5fd6c2a6f764649d45e67a9bd.png](https://b3logfile.com/file/2022/06/f047cb5fd6c2a6f764649d45e67a9bd-f0de3fc7.png)
+![f047cb5fd6c2a6f764649d45e67a9bd.png](https://upload-images.jianshu.io/upload_images/6765590-f986989483a34081.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 支持的视频格式：H.264 视频，高达 1080p，每秒 30 帧，High Profile level 4.1
 
@@ -85,8 +88,7 @@ H.265是H.264的升级版，它的压缩率更高，但是支持的浏览器较�
 
 使用caniuse查询[H.265兼容性](https://caniuse.com/?search=h265)通红一片，大部分浏览器都不兼容
 
-![](https://b3logfile.com/file/2022/06/5b2bcc87263b4e98b606ce28d180f894.png)
-
+![image.png](https://upload-images.jianshu.io/upload_images/6765590-6c3f92e2e1263e51.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 ## 最后介绍下如何转码
@@ -110,13 +112,13 @@ ffmpeg -i 无法播放的视频文件.mp4 -vcodec h264 -profile:v high -level 4.
 2.有的是直接转码为Main Profile level 3.1，是因为iPhone 4 支持的最高就是这个档位，具体文档 [iPhone 4  - 技术规格](https://support.apple.com/kb/SP587?viewlocale=zh_CN&locale=zh_CN) 
 
 然而，这个档位的压缩率很低，压缩后的视频文件会很大，所以我们不应该再面向iPhone 4或那时代的产物，而是应该提高压缩级别。
-<br />
-<br />
-<br />
+
+<br>
+
 为此我做了一个[在线视频压缩](https://convert.dxcweb.com/)的网站 https://convert.dxcweb.com/ 提高压缩级别，默认为无损压缩，压缩级别为High Profile level 4.2.
 
 相比Main Profile level 3.1在相同的分辨率和码率的情况下压缩率提高了很多，实测压缩前23.32MB压缩后2.53MB。
+ 
+**所有视频无法播放的问题，使用本软件压缩后都能解决！** 本软件20M免费，大于20M按视频时长计费。
 
-**<font color=red>所有视频无法播放的问题，使用本软件压缩后都能解决！</font>** 本软件20M免费，大于20M按视频分钟计费。我也正在考虑是否开源，
-
-关注我的[GitHub](https://github.com/dxcweb)。
+我也正在考虑是否开源，关注我的[GitHub](https://github.com/dxcweb)。
