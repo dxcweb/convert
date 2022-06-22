@@ -116,10 +116,12 @@ ffmpeg -i 无法播放的视频文件.mp4 -vcodec h264 -profile:v high -level 4.
 
 <br>
 
-为此我做了一个[在线视频压缩](https://convert.dxcweb.com/)的网站 https://convert.dxcweb.com/ 提高压缩级别，默认为无损压缩，压缩级别为High Profile level 4.2。
+为此我做了一个[在线视频压缩](https://convert.dxcweb.com/)的网站 https://convert.dxcweb.com/ 。
 
-相比Main Profile level 3.1在相同的分辨率和码率的情况下压缩率提高了很多，实测压缩前23.32MB压缩后2.53MB。
+提供在线无损压缩在不改变画质保证兼容性上最大化压缩视频，降低带宽成本，提高传输速度。同时也是一款标准化视频编码和标准化视频声音的转码软件。
+
+压缩级别为High Profile level 4.2，相比Main Profile level 3.1在相同的分辨率和码率的情况下压缩率提高了很多，实测压缩前23.32MB压缩后2.53MB。
  
-**所有视频无法播放的问题，使用本软件压缩后都能解决！** 本软件20M免费，大于20M按视频时长计费。
+**准化视频编码后同时也解决了视频无法播放的问题。**
 
 我也正在考虑是否开源，关注我的[GitHub](https://github.com/dxcweb)。
