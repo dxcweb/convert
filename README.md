@@ -4,9 +4,9 @@ mp4视频在部分手机上加载失败、无法播放或有声音没画面的�
 
 ## 遇到的问题
 
-1.mp4视频在 iPhone XR (IOS 14.1) 上无法播放，一直显示加载失败，但是在安卓手机上却可以正常播放；
+1. mp4视频在 iPhone XR (IOS 14.1) 上无法播放，一直显示加载失败，但是在安卓手机上却可以正常播放；
 
-2.一些mp4视频在安卓手机上有声音但是没有画面。
+2. 一些mp4视频在安卓手机上有声音但是没有画面。
 
 ## 问题定位
 为了排除是代码的问题，写了个简单的demo：
@@ -21,9 +21,10 @@ mp4视频无法播放的问题很可能出在**视频本身**。
 
 ## 如何解决
 ### 查看官方文档
-查询 Apple 官网的[设备技术规格](https://support.apple.com/zh_CN/specs) 在 [iPhone 6 - 技术规格](https://https://support.apple.com/kb/SP705?viewlocale=zh_CN&locale=zh_CN)
+查询 Apple 官网的[设备技术规格](https://support.apple.com/zh_CN/specs) 在 [iPhone 6 - 技术规格](https://support.apple.com/kb/SP705?viewlocale=zh_CN&locale=zh_CN)
 
-![1712668a0f0c96baf541936ec7bb99f.png](https://upload-images.jianshu.io/upload_images/6765590-477a4a2dceaba2fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![iPhone 6 支持的视频格式](https://upload-images.jianshu.io/upload_images/6765590-d469f6cd582a7c9a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 
 明确写到支持的视频格式：H.264 视频：最高支持 1080p、60 fps、High Profile level 4.2 编码
@@ -32,19 +33,19 @@ mp4视频无法播放的问题很可能出在**视频本身**。
 
 进一步查看问题手机 [iPhone XR - 技术规格](https://support.apple.com/kb/SP781?viewlocale=zh_CN&locale=zh_CN)
 
-![2628a4d3517291652ea570b9aaa6fb0.png](https://upload-images.jianshu.io/upload_images/6765590-d8624e669377ae93.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![iPhone XR 支持的视频格式](https://upload-images.jianshu.io/upload_images/6765590-d8624e669377ae93.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 支持的视频格式：HEVC、H.264、MPEG-4 Part 2 与 Motion JPEG
 
 并没有明确写出支持的视频编码
 
-[iPhone 4s - 技术规格](https://support.apple.com/kb/SP655?viewlocale=zh_CN&locale=zh_CN)
+[iPhone 4s - 技术规格](https://support.apple.com/kb/SP643?viewlocale=zh_CN&locale=zh_CN)
 
-![f047cb5fd6c2a6f764649d45e67a9bd.png](https://upload-images.jianshu.io/upload_images/6765590-f986989483a34081.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![iPhone 4s 支持的视频格式](https://upload-images.jianshu.io/upload_images/6765590-f986989483a34081.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-支持的视频格式：H.264 视频，高达 1080p，每秒 30 帧，High Profile level 4.1
+支持视频格式：H.264 视频最高可达 1080p，每秒 30 帧，High Profile level 4.1
 
 ### 文档结论
 **iPhone 4s 只支持到High Profile level 4.1编码，iPhone 6 支持到 High Profile level 4.2编码。**
@@ -115,7 +116,7 @@ ffmpeg -i 无法播放的视频文件.mp4 -vcodec h264 -profile:v high -level 4.
 
 <br>
 
-为此我做了一个[在线视频压缩](https://convert.dxcweb.com/)的网站 https://convert.dxcweb.com/ 提高压缩级别，默认为无损压缩，压缩级别为High Profile level 4.2.
+为此我做了一个[在线视频压缩](https://convert.dxcweb.com/)的网站 https://convert.dxcweb.com/ 提高压缩级别，默认为无损压缩，压缩级别为High Profile level 4.2。
 
 相比Main Profile level 3.1在相同的分辨率和码率的情况下压缩率提高了很多，实测压缩前23.32MB压缩后2.53MB。
  
